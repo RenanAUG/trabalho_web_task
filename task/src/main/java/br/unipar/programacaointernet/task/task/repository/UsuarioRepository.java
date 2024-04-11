@@ -14,6 +14,41 @@ public class UsuarioRepository {
     private EntityManager em;
 
     public List<Usuario> listarTodos() {
+        String jpql = "SELECT u FROM Usuario u";
+        return em.createQuery(jpql, Usuario.class).getResultList();
+    }
+
+    public Usuario buscarPorID(Integer id) {
+        return em.find(Usuario.class, id);
+    }
+
+    public void cadastrar(Usuario usuario) throws Exception {
+        try {
+            em.persist(usuario);
+        } catch (Exception e) {
+            throw new Exception("Usuário não cadastrado");
+        }
+    }
+
+    public void deletarUsuario(Integer id) throws Exception {
+        try {
+            Usuario usuario = em.find(Usuario.class, id);
+
+            em.remove(usuario);
+        } catch (Exception e) {
+            throw new Exception("Usuário não encontrado");
+        }
+    }
+
+    public void editarUsuario(Integer id) throws Exception {
+        try {
+            Usuario usuario = em.find(Usuario.class, id);
+
+            em.merge(usuario);
+        } catch (Exception e) {
+            throw new Exception("Erro, ao atualizar");
+        }
 
     }
+
 }
