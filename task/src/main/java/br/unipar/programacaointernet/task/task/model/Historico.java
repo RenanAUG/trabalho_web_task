@@ -25,7 +25,7 @@ public class Historico {
     private String observacao;
 
     @Column
-    private String prioridade;
+    private Boolean prioridade;
 
     @Column
     private String status;

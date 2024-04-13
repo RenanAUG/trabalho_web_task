@@ -19,7 +19,7 @@ public class TaskService {
         taskRepository.cadastrar(task);
     }
 
-    public void busarPorId(Integer id) throws Exception{
+    public void buscarPorId(Integer id) throws Exception{
         taskRepository.buscarPorId(id);
     }
 
