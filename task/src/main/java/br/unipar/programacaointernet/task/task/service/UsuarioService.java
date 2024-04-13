@@ -21,15 +21,25 @@ public class UsuarioService {
         usuarioRepository.cadastrar(usuario);
     }
 
-    public void buscarPorId(Integer id) {
-        usuarioRepository.buscarPorID(id);
+    public Usuario buscarPorId(Integer id) {
+        return usuarioRepository.buscarPorID(id);
     }
 
     public void deletarUsuario(Integer id) throws Exception {
         usuarioRepository.deletarUsuario(id);
     }
 
-    public void atualizarUsuario(Integer id) throws Exception {
-        usuarioRepository.editarUsuario(id);
+    public void atualizarUsuario(Integer id, String nome, String cargo) throws Exception {
+        Usuario usuarioAtual = usuarioRepository.buscarPorID(id);
+
+        if (cargo != null) {
+            usuarioAtual.setCargo(cargo);
+        }
+
+        if (nome != null) {
+            usuarioAtual.setNome(nome);
+        }
+
+        usuarioRepository.editarUsuario(usuarioAtual);
     }
 }

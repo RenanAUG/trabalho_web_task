@@ -40,10 +40,8 @@ public class UsuarioRepository {
         }
     }
 
-    public void editarUsuario(Integer id) throws Exception {
+    public void editarUsuario(Usuario usuario) throws Exception {
         try {
-            Usuario usuario = em.find(Usuario.class, id);
-
             em.merge(usuario);
         } catch (Exception e) {
             throw new Exception("Erro, ao atualizar");
