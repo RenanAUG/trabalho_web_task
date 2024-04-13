@@ -16,7 +16,11 @@ public class TaskRepository {
     }
 
     public Task buscarPorId(Integer id){
-        return em.find(Task.class, id);
+        try{
+            return em.find(Task.class, id);
+        }catch (Exception e){
+            return null;
+        }
     }
 
     public void cadastrar(Task task) throws Exception{

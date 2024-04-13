@@ -1,6 +1,7 @@
 package br.unipar.programacaointernet.task.task.controller;
 
 import br.unipar.programacaointernet.task.task.model.Usuario;
+import br.unipar.programacaointernet.task.task.service.HistoricoService;
 import br.unipar.programacaointernet.task.task.service.UsuarioService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
@@ -15,6 +16,9 @@ public class UsuarioController {
     @Inject
     private UsuarioService usuarioService;
 
+    @Inject
+    private HistoricoService historicoService;
+
     @GET
     @Produces(value = MediaType.APPLICATION_JSON)
     public Response listarUsuarios() {
@@ -27,6 +31,8 @@ public class UsuarioController {
     public Response inserirUsuario(Usuario usuario) {
         try {
             usuarioService.cadastrar(usuario);
+
+            historicoService.salvarHistorico("Usuario inserido! " + usuario.getId(), "Usuario inserido com sucesso!!", true, "OK", null, usuario);
 
             return Response.status(200)
                     .entity("Usuario cadastrado com sucesso")
@@ -48,6 +54,8 @@ public class UsuarioController {
         try {
             usuarioService.deletarUsuario(id);
 
+            historicoService.salvarHistorico("Usuario deletado! " + id, "Usuario deletado com sucesso!!", true, "OK", null, null);
+
             return Response.status(200)
                     .entity("Usuario deletado com sucesso")
                     .build();
@@ -65,6 +73,9 @@ public class UsuarioController {
     ) {
         try {
             usuarioService.atualizarUsuario(id, nome, cargo);
+
+            historicoService.salvarHistorico("Usuario editado! " + id, "Usuario editado com sucesso!!", true, "OK", null, null);
+
             return Response.status(200)
                         .entity("Usuário editado com sucesso.")
                         .build();

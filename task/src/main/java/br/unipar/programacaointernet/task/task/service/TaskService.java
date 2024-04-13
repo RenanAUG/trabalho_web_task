@@ -19,8 +19,8 @@ public class TaskService {
         taskRepository.cadastrar(task);
     }
 
-    public void buscarPorId(Integer id) throws Exception{
-        taskRepository.buscarPorId(id);
+    public Task buscarPorId(Integer id){
+        return taskRepository.buscarPorId(id);
     }
 
     public void deletarTask(Integer id) throws Exception{
