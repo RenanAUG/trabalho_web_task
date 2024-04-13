@@ -1,6 +1,5 @@
 package br.unipar.programacaointernet.task.task.model;
 
-import jakarta.ejb.Local;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

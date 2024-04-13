@@ -1,12 +1,10 @@
 package br.unipar.programacaointernet.task.task.controller;
 
-import br.unipar.programacaointernet.task.task.model.Historico;
 import br.unipar.programacaointernet.task.task.model.Task;
 import br.unipar.programacaointernet.task.task.service.HistoricoService;
 import br.unipar.programacaointernet.task.task.service.TaskService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
-import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
