@@ -26,7 +26,7 @@ public class UsuarioRepository {
         try {
             em.persist(usuario);
         } catch (Exception e) {
-            throw new Exception("Usuário não cadastrado");
+            throw new Exception("Usuário não cadastrado " + e.getMessage());
         }
     }
 
@@ -36,7 +36,7 @@ public class UsuarioRepository {
 
             em.remove(usuario);
         } catch (Exception e) {
-            throw new Exception("Usuário não encontrado");
+            throw new Exception("Usuário não encontrado! " + e.getMessage());
         }
     }
 
@@ -44,7 +44,7 @@ public class UsuarioRepository {
         try {
             em.merge(usuario);
         } catch (Exception e) {
-            throw new Exception("Erro, ao atualizar");
+            throw new Exception("Erro, ao atualizar " + e.getMessage());
         }
 
     }

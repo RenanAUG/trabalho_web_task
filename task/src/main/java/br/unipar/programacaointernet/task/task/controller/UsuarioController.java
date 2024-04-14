@@ -3,6 +3,7 @@ package br.unipar.programacaointernet.task.task.controller;
 import br.unipar.programacaointernet.task.task.model.Usuario;
 import br.unipar.programacaointernet.task.task.service.HistoricoService;
 import br.unipar.programacaointernet.task.task.service.UsuarioService;
+import jakarta.annotation.security.PermitAll;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
@@ -41,13 +42,15 @@ public class UsuarioController {
     }
 
     @GET
+    @Path("/{id}")
     @Produces(value = MediaType.APPLICATION_JSON)
     public Response buscarUsuarioPorId(@PathParam("id") Integer id) {
         return Response.ok(usuarioService.buscarPorId(id)).build();
     }
 
     @DELETE
-    @Produces(value = MediaType.APPLICATION_JSON)
+    @Path("/{id}")
+    @PermitAll
     public Response deletarUsuario(@PathParam("id") Integer id) {
         try {
             usuarioService.deletarUsuario(id);
@@ -63,6 +66,7 @@ public class UsuarioController {
     }
 
     @PUT
+    @Path("/{id}")
     @Produces(value = MediaType.APPLICATION_JSON)
     public Response editarUsuario(
             @PathParam("id") Integer id,

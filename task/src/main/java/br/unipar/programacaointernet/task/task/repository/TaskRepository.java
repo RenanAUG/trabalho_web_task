@@ -29,7 +29,7 @@ public class TaskRepository {
         try{
             em.persist(task);
         }catch(Exception e){
-            throw new Exception("Task não pôde ser cadastrada!");
+            throw new Exception("Task não pôde ser cadastrada! " + e.getMessage());
         }
     }
 
@@ -39,7 +39,7 @@ public class TaskRepository {
 
             em.remove(task);
         }catch (Exception e){
-            throw new Exception("Task não pôde ser deletada!");
+            throw new Exception("Task não pôde ser deletada!" + e.getMessage());
         }
     }
 

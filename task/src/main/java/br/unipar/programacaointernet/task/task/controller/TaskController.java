@@ -42,12 +42,14 @@ public class TaskController {
     }
 
     @GET
+    @Path("/{id}")
     @Produces(value = MediaType.APPLICATION_JSON)
     public Response buscarTaskPorId(@PathParam("id") Integer id) {
         return Response.ok(taskService.buscarPorId(id)).build();
     }
 
     @DELETE
+    @Path("/{id}")
     @Produces(value = MediaType.APPLICATION_JSON)
     public Response deletarTask(@PathParam("id") Integer id) {
         try {
@@ -64,6 +66,7 @@ public class TaskController {
     }
 
     @PUT
+    @Path("/{id}")
     @Produces(value = MediaType.APPLICATION_JSON)
     public Response editarTask(
             @PathParam("id") Integer id,
