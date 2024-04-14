@@ -36,7 +36,6 @@ public class Task {
     @Column
     private LocalDate dataTermino;
 
-    @Column
     @ManyToOne
     @JoinColumn(name = "fk_usuario_id")
     private Usuario usuario;

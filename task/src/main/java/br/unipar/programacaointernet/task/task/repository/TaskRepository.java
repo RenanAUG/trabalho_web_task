@@ -1,11 +1,13 @@
 package br.unipar.programacaointernet.task.task.repository;
 
 import br.unipar.programacaointernet.task.task.model.Task;
+import jakarta.ejb.Stateless;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.EntityManager;
 
 import java.util.List;
 
+@Stateless
 public class TaskRepository {
     @PersistenceContext(unitName = "HibernateMaven")
     private EntityManager em;
@@ -56,7 +58,7 @@ public class TaskRepository {
                 throw new Exception("O ID está nulo");
             }
         }catch(Exception e){
-            throw new Exception("Erro ao editar task");
+            throw new Exception("Erro ao editar task: " + e.getMessage());
         }
     }
 }

@@ -2,10 +2,13 @@ package br.unipar.programacaointernet.task.task.service;
 
 import br.unipar.programacaointernet.task.task.model.Task;
 import br.unipar.programacaointernet.task.task.repository.TaskRepository;
+import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 
 import java.util.List;
 
+
+@Stateless
 public class TaskService {
 
     @Inject
